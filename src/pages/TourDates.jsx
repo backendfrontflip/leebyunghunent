@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 
 export default function TourDates() {
   const allDates = [
-    { date: "June 1, 2025", city: "Los Angeles, USA", venue: "Hollywood Bowl", region: "America" },
-    { date: "June 4, 2025", city: "New York City, USA", venue: "Madison Square Garden", region: "America" },
-    { date: "June 8, 2025", city: "Chicago, USA", venue: "United Center", region: "America" },
-    { date: "June 12, 2025", city: "Paris, France", venue: "Accor Arena", region: "Europe" },
-    { date: "June 16, 2025", city: "Berlin, Germany", venue: "Mercedes-Benz Arena", region: "Europe" },
-    { date: "June 21, 2025", city: "London, UK", venue: "The O2", region: "Europe" },
-    { date: "June 28, 2025", city: "Barcelona, Spain", venue: "Palau Sant Jordi", region: "Europe" },
+    { date: "June 17th - 21st", city: "Los Angele", venue: "Madison Square Garden", region: "America" },
+    { date: "June 22nd - 25th", city: "New York City", venue: "Hollywood Bowl", region: "America" },
+    { date: "June 26th - 28th", city: "Detroit, Michigan", venue: "The Eightfold Collective", region: "America" },
+    //{ date: "June 12, 2025", city: "Paris, France", venue: "Accor Arena", region: "Europe" },
+    //{ date: "June 16, 2025", city: "Berlin, Germany", venue: "Mercedes-Benz Arena", region: "Europe" },
+    //{ date: "June 21, 2025", city: "London, UK", venue: "The O2", region: "Europe" },
+    //{ date: "June 28, 2025", city: "Barcelona, Spain", venue: "Palau Sant Jordi", region: "Europe" },
   ];
 
   const [regionFilter, setRegionFilter] = useState("All");

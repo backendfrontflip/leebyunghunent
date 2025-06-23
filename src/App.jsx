@@ -1,11 +1,13 @@
+// src/App.jsx
 import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Navbar from './components/NavBar';
 import HomePage from './pages/HomePage';
 import Charity from './components/Charity';
 import FanCard from './components/FanCard';
 import About from './components/About';
 import ContactUs from './components/ContactUs';
-import Navbar from './components/NavBar';
 import CardPage from './pages/CardPage';
 import CongratulationPage from './pages/CongratulationPage';
 import MeetAndGreet from './pages/MeetAndGreet';
@@ -17,12 +19,14 @@ import AddressRequest from './pages/AddressRequest';
 import TourDates from './pages/TourDates';
 import Ticket from './components/Ticket';
 import La from './components/tickets/La';
-import Ld from "./components/tickets/Ld"
-import Ny from "./components/tickets/Ny"
-import Cg from "./components/tickets/Cg"
-import Ba from "./components/tickets/Ba"
-import Be from "./components/tickets/Be"
-import Pa from "./components/tickets/Pa"
+import Ny from './components/tickets/Ny';
+import Cg from './components/tickets/Cg';
+import Pa from './components/tickets/Pa';
+import Be from './components/tickets/Be';
+import Ld from './components/tickets/Ld';
+import Ba from './components/tickets/Ba';
+import De from './components/tickets/De';
+import Parade from './pages/Parade';
 
 function App() {
   return (
@@ -51,6 +55,8 @@ function App() {
         <Route path="/tickets/be" element={<Be />} />
         <Route path="/tickets/ld" element={<Ld />} />
         <Route path="/tickets/ba" element={<Ba />} />
+        <Route path="/tickets/de" element={<De />} />
+        <Route path="/tickets/parade" element={<Parade />} />
       </Routes>
     </Router>
   );

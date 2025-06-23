@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 // Define the tour cities and routes
 const tourCities = [
-  { city: "Los Angeles", date: "June-1st", path: "/tickets/la" },
-  { city: "New York", date: "June-4th", path: "/tickets/ny" },
-  { city: "Chicago", date: "June-8th", path: "/tickets/cg" },
-  { city: "Paris", date: "June-12th", path: "/tickets/pa" },
-  { city: "Berlin", date: "June-16th", path: "/tickets/be" },
-  { city: "London", date: "June-21st", path: "/tickets/ld" },
-  { city: "Barcelona", date: "June-28th", path: "/tickets/ba" },
+  { city: "New York", date: "June 17th - 21st", path: "/tickets/ny" },
+  { city: "Los Angeles", date: "June 22nd - 25th", path: "/tickets/la" },
+  { city: "Detroit", date: "June 26th - 28th", path: "/tickets/de" },
+  //{ city: "Paris", date: "June-12th", path: "/tickets/pa" },
+  //{ city: "Berlin", date: "June-16th", path: "/tickets/be" },
+  //{ city: "London", date: "June-21st", path: "/tickets/ld" },
+  //{ city: "Barcelona", date: "June-28th", path: "/tickets/ba" },
 ];
 
 export default function Tickets() {

@@ -3,12 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaLessThan } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SelectInput from "./SelectInput";
 
 export default function Ba() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     ticketType: "Regular",
+    eventLocation: "New York", // ✅ New field
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
@@ -23,9 +25,9 @@ export default function Ba() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, email, ticketType } = formData;
+    const { name, email, ticketType, eventLocation } = formData;
 
-    if (!name.trim() || !email.trim() || !ticketType.trim()) {
+    if (!name.trim() || !email.trim() || !ticketType.trim() || !eventLocation.trim()) {
       toast.error("Please fill in all required fields.");
       return;
     }
@@ -46,7 +48,7 @@ export default function Ba() {
         <div className="relative w-full">
           <img
             src={`${import.meta.env.BASE_URL}tickets/london.jpg`}
-            alt="Paris"
+            alt="London"
             className="border rounded-xl w-full object-cover"
           />
 
@@ -60,21 +62,25 @@ export default function Ba() {
                 >
                   <h3 className="text-lg font-bold mb-3">Reserve Your Spot</h3>
 
-                  {/* Ticket Type */}
+                  {/* ✅ Event Location Select */}
                   <select
-                    value={formData.ticketType}
+                    value={formData.eventLocation}
                     onChange={(e) =>
-                      setFormData({ ...formData, ticketType: e.target.value })
+                      setFormData({ ...formData, eventLocation: e.target.value })
                     }
                     className="w-full mb-3 p-2 border border-gray-300 rounded"
                     required
                   >
-                    <option value="Regular">Regular - $150</option>
-                    <option value="VIPs">VIPs - $300</option>
-                    <option value="VVIPs">VVIPs - $450</option>
+                    <option value="New York">New York</option>
+                    <option value="London">London</option>
+                    <option value="Seoul">Seoul</option>
+                    <option value="Tokyo">Tokyo</option>
                   </select>
 
-                  {/* Name */}
+                  {/* Ticket Type Select */}
+                  <SelectInput />
+
+                  {/* Name Input */}
                   <input
                     type="text"
                     placeholder="Name"
@@ -86,7 +92,7 @@ export default function Ba() {
                     required
                   />
 
-                  {/* Email */}
+                  {/* Email Input */}
                   <input
                     type="email"
                     placeholder="Email"
@@ -98,6 +104,7 @@ export default function Ba() {
                     required
                   />
 
+                  {/* Submit Button */}
                   <button
                     type="submit"
                     className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition"
