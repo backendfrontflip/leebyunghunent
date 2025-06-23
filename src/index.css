@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Old Standard TT", serif;
+    background: linear-gradient(to bottom, #000000, #1a1a1a, #333333);
+    color: white;
+    min-height: 100vh;
+  }
+  
