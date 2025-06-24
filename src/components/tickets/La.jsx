@@ -3,14 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaLessThan } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import SelectInput from "./SelectInput";
+import La2 from "../../assets/la2.jpg";
 
 export default function Ba() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     ticketType: "Regular",
-    eventLocation: "New York", // ✅ New field
+    eventLocation: "New York",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
@@ -45,9 +45,9 @@ export default function Ba() {
       <ToastContainer />
       <div className="w-full max-w-md flex flex-col items-center">
         {/* Image */}
-        <div className="relative w-full">
+        <div className="relative w-full pb-8">
           <img
-            src={`${import.meta.env.BASE_URL}tickets/la2.jpg`}
+            src={La2}
             alt="London"
             className="border rounded-xl w-full object-cover"
           />
@@ -62,23 +62,48 @@ export default function Ba() {
                 >
                   <h3 className="text-lg font-bold mb-3">Reserve Your Spot</h3>
 
-                  {/* ✅ Event Location Select */}
-                  <select
-                    value={formData.eventLocation}
-                    onChange={(e) =>
-                      setFormData({ ...formData, eventLocation: e.target.value })
-                    }
-                    className="w-full mb-3 p-2 border border-gray-300 rounded"
-                    required
-                  >
-                    <option value="New York">New York</option>
-                    <option value="London">London</option>
-                    <option value="Seoul">Seoul</option>
-                    <option value="Tokyo">Tokyo</option>
-                  </select>
-
-                  {/* Ticket Type Select */}
-                  <SelectInput />
+                  {/* Ticket Type Radio Group */}
+                  <div className="mb-3">
+                    <p className="font-semibold mb-1">Select Ticket Type:</p>
+                    <div className="space-y-2">
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          name="ticketType"
+                          value="Regular"
+                          checked={formData.ticketType === "Regular"}
+                          onChange={(e) =>
+                            setFormData({ ...formData, ticketType: e.target.value })
+                          }
+                        />
+                        Regular – $150
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          name="ticketType"
+                          value="VIP"
+                          checked={formData.ticketType === "VIP"}
+                          onChange={(e) =>
+                            setFormData({ ...formData, ticketType: e.target.value })
+                          }
+                        />
+                        VIP – $200
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          name="ticketType"
+                          value="VVIP"
+                          checked={formData.ticketType === "VVIP"}
+                          onChange={(e) =>
+                            setFormData({ ...formData, ticketType: e.target.value })
+                          }
+                        />
+                        VVIP – $250
+                      </label>
+                    </div>
+                  </div>
 
                   {/* Name Input */}
                   <input
@@ -104,7 +129,6 @@ export default function Ba() {
                     required
                   />
 
-                  {/* Submit Button */}
                   <button
                     type="submit"
                     className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition"

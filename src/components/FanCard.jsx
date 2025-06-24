@@ -68,7 +68,7 @@ const FanCard = () => {
         />
       </div>
 
-      <h2 className="text-3xl font-bold mb-4 reveal">Fan Card Membership</h2>
+      <h2 className="text-3xl font-bold mb-4 reveal">Membership</h2>
       <p className="mb-6 reveal">
         Join the exclusive fan card membership program for behind-the-scenes
         content, early event access, and more!

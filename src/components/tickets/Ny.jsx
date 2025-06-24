@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaLessThan } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Newyork from "../../assets/n-y.jpg"; // Assuming you have an image at this path
 
 export default function Ny() {
   const [formData, setFormData] = useState({
@@ -45,7 +46,7 @@ export default function Ny() {
         {/* Image */}
         <div className="relative w-full">
           <img
-            src={`${import.meta.env.BASE_URL}tickets/n-y.jpg`}
+            src={Newyork}
             alt="New York"
             className="border rounded-xl w-full object-cover"
           />

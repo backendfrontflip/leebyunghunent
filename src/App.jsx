@@ -26,7 +26,7 @@ import Be from './components/tickets/Be';
 import Ld from './components/tickets/Ld';
 import Ba from './components/tickets/Ba';
 import De from './components/tickets/De';
-import Parade from './pages/Parade';
+import ParadeTicketPage from './pages/ParadeTicketPage';
 
 function App() {
   return (
@@ -56,7 +56,7 @@ function App() {
         <Route path="/tickets/ld" element={<Ld />} />
         <Route path="/tickets/ba" element={<Ba />} />
         <Route path="/tickets/de" element={<De />} />
-        <Route path="/tickets/parade" element={<Parade />} />
+        <Route path="/paradeticket" element={<ParadeTicketPage />} />
       </Routes>
     </Router>
   );

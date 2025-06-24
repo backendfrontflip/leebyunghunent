@@ -4,6 +4,7 @@ import ScrollReveal from 'scrollreveal';
 import ImageCarousel from '../components/ImageCarousel';
 import Footer from '../components/Footer';
 import { FaArrowAltCircleRight, FaArrowRight } from 'react-icons/fa';
+import SquidParade from '../assets/squidgameparade.jpg';
 
 const HomePage = () => {
   const [showAnnouncement, setShowAnnouncement] = useState(true);
@@ -57,7 +58,7 @@ const HomePage = () => {
       <div className="px-4 py-8 w-full">
         <div className="w-full flex justify-center">
           <img
-            src="/squidgameparade.jpg"
+            src={SquidParade}
             alt="Squid Game Parade Event Poster"
             className="rounded-xl shadow-lg w-full max-w-4xl object-cover"
           />
@@ -88,7 +89,7 @@ const HomePage = () => {
             VIP attendees only!
           </p>
 
-          <Link to="/parade" className="inline-block w-full sm:w-auto">
+          <Link to="/paradeticket" className="inline-block w-full sm:w-auto">
             <button className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 sm:px-8 rounded-full transition duration-300 transform hover:scale-105 w-full sm:w-auto">
               Get Ticket Now
             </button>
@@ -118,14 +119,14 @@ const HomePage = () => {
               17TH-21ST
             </span>
             <span className="font-bold text-2xl mb-4 border-transparent flex items-center">
-              <span className="mr-2">NEW YORK</span>
+              <span className="mr-2">LOS ANGELES</span>
               <FaArrowRight className="mr-2" />
-              17TH-21ST
+              22ND-28TH
             </span>
             <span className="font-bold text-2xl mb-4 border-transparent flex items-center">
-              <span className="mr-2">NEW YORK</span>
+              <span className="mr-2">DETROIT MI</span>
               <FaArrowRight className="mr-2" />
-              17TH-21ST
+              29TH-30TH
             </span>
           </div>
         </div>

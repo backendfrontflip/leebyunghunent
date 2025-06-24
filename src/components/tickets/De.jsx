@@ -4,6 +4,7 @@ import { FaLessThan } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SelectInput from "./SelectInput";
+import Det from "../../assets/de.jpg";
 
 export default function De() {
   const [formData, setFormData] = useState({
@@ -47,7 +48,7 @@ export default function De() {
         {/* Image */}
         <div className="relative w-full">
           <img
-            src={`${import.meta.env.BASE_URL}tickets/de.jpg`}
+            src={Det}
             alt="Detroit"
             className="border rounded-xl w-full object-cover"
           />

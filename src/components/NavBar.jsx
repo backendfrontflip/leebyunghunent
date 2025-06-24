@@ -48,7 +48,7 @@ const Navbar = () => {
             className="hover:bg-gray-600 text-center border rounded-2xl px-4 py-2"
             onClick={() => setIsOpen(false)}
           >
-            Fan Card
+            Membership
           </Link>
           <Link
             to="/about"
